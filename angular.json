@@ -28,9 +28,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/bootstrap/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/bootstrap/jquery-3.5.1.slim.min.js",
+              "src/assets/bootstrap/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -91,9 +95,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/bootstrap/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/bootstrap/jquery-3.5.1.slim.min.js",
+              "src/assets/bootstrap/bootstrap.bundle.min.js"
+            ]
           }
         },
         "lint": {

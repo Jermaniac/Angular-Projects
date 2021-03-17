@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <h1>Opciones de filtrado</h1>
+    <div class="form-group">
+        <label for="categorias">Categorias</label>
+        <select id="categorias" class="form-control" [(ngModel)]="categoria">
+            <option *ngFor="let cat of config.categorias">{{cat}}</option>
+        </select>
+    </div>
+    <!--Aqui uso dos formas para capturar las variable min y max-->
+    <div class="form-group">
+        <label for="precioMin">Precio minimo</label>
+        <input type="range" id="precioMin" class="form-control" 
+            min="{{config.rangoMinInicial}}" 
+            [max]="config.rangoMinFinal"
+            [(ngModel)]="precioMinimo">
+        <span class="badge badge-pill badge-primary">{{precioMinimo}}</span>
+    </div>
+
+    <div class="form-group">
+        <label for="precioMax">Precio maximo</label>
+        <input type="range" id="precioMax" class="form-control" 
+            min="{{config.rangoMaxInicial}}" 
+            [max]="config.rangoMaxFinal"
+            [(ngModel)]="precioMaximo">
+        <span class="badge badge-pill badge-primary">{{precioMaximo}}</span>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary" (click)="aplicarFiltro()">Filtrar</button>
+    </div>
+</div>

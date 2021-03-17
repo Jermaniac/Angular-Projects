@@ -1,0 +1,61 @@
+<div>
+    <h1>{{mensaje}}</h1>
+</div>
+
+<div>
+    <h1>Ficha de alumno</h1>
+    <p>NIF: {{unAlumno.nif}}</p>
+    <p>Nombre: {{unAlumno.nombre}}</p>
+    <p>Apellidos: {{unAlumno.apellidos}}</p>
+    <p>Correo: {{unAlumno.correo}}</p>
+</div>
+
+<div>
+    <h1>Enviar correo</h1>
+    <div>
+        <label for="titulo">Titulo</label>
+        <input type="text" name="titulo" id="titulo" [(ngModel)]="tituloDelCorreo">
+    </div>
+    <div>
+        <label for="mensaje">Mensaje</label>
+        <input type="text" name="mensaje" id="mensaje" [(ngModel)]="textoDelCorreo">
+    </div>
+    <div>Previsualizando correo {{tituloDelCorreo}} {{textoDelCorreo}}</div>
+    <div>
+        <button (click)="unAlumno.enviarCorreo(tituloDelCorreo, textoDelCorreo)">Enviar correo: (click)</button>
+    </div>
+    <div>
+        <button on-click="unAlumno.enviarCorreo(tituloDelCorreo, textoDelCorreo)">Enviar correo: on-click</button>
+    </div>
+</div>
+
+<div>
+    <button (click)="crearAlumno()">Crear alumno</button>
+    <button (click)="borrarAlumnos()">Borrar alumno</button>
+</div>
+
+<!--Solamente mostrar si hay alumnos: *ngIf se le pasa una expresion para calcular boolean-->
+<!--En el caso de que sea muy grande no se pone aqui-->
+<table *ngIf="listaAlumnos.length != 0" class="table">
+    <thead>
+        <tr>
+            <td>NIF</td>
+            <td>Nombre</td>
+            <td>Apellidos</td>
+            <td>Correo</td>
+        </tr>
+    </thead>
+    <!--Para hacer bucles: *ngFor-->
+    <tbody>
+        <!--Entre corchetes puedo colocar un elemento css para poder utilizar algun estilo-->
+        <!--Este elemento puede ser de bootstrap (alert-success) o bien creados por mi en el fichero .css-->
+        <!--Bootstrap: [class.alert-success] y PROPIO: [class.seleccionado]-->
+        <tr *ngFor="let alumno of listaAlumnos" (click)="filaPulsada(alumno.nif)" 
+            [class.seleccionado]="alumno.nif == nifDelAlumnoSeleccionado">
+            <td>{{alumno.nif}}</td>
+            <td>{{alumno.nombre}}</td>
+            <td>{{alumno.apellidos}}</td>
+            <td>{{alumno.correo}}</td>
+        </tr>
+    </tbody>
+</table>

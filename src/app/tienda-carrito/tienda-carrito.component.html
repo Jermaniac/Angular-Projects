@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>Carrito de la compra</h1>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let compra of carrito.productosComprados">
+            <div class="card">
+                <div class="card-header">{{compra.referencia.nombre}}</div>
+                <div class="card-body">
+                    <span class="card-text mr-2">
+                        {{compra.referencia.precioUnidad * compra.cantidad | number:'0.2-2'}} €
+                    </span>
+                    <span class="badge badge-secondary">
+                        {{compra.cantidad}}
+                    </span>
+                    <button class="btn btn-danger ml-4"
+                    (click)="quitarCompra(compra)"
+                    >x</button>
+                </div>
+            </div>
+
+        </li>
+        <div><h1>Total: {{carrito.total | number:'0.2-2'}}</h1></div>
+    </ul>
+</div>

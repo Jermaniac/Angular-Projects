@@ -1,0 +1,23 @@
+
+<div class="container">
+    <h1>Productos de la tienda</h1>
+    <div class="row">
+        <div class="col-6 mb-2 mt-2" *ngFor="let producto of catalogo">
+            <div class="card shadow">
+                <h5 class="card-header">{{producto.nombre | uppercase}}</h5>
+                <div class="card-body">
+                    <div class="card-text">{{producto.descripcion}}</div>
+                    <!--Vamos a usar un pipe de angular para poder limitar los decimales del precio-->
+                    <p>Precio: {{producto.precioUnidad | number:'0.2-2' }} €</p>
+                    <a href="#" [routerLink]="['/producto', producto.id]" 
+                    class="btn btn-primary mx-4"
+                    >Ver ficha</a>
+                    <button class="btn btn-primary" 
+                    [class.disabled]="!producto.disponible"
+                    (click)="comprarProducto(producto)"
+                    >Comprar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

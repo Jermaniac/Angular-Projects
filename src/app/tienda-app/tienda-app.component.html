@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+            <!--Incoporamos un componente hijo-->
+            <!--[ComponenteHIJO]="COMPONENTEPADRE"-->
+            <app-tienda-filtro [config]="configFiltroInicial"
+            [catalogo]="catalogoDeProductos"
+            [filtrado]="datos"
+            ></app-tienda-filtro>
+        </div>
+        <div class="col-7">
+            <!--Incoporamos otro componente hijo-->
+            <app-tienda-productos 
+            [catalogo]="datos.catalogoFiltrado"
+            [carrito]="elCarrito"
+            ></app-tienda-productos>
+        </div>
+        <div class="col-3">
+            <!--Incoporamos otro componente hijo-->
+            <app-tienda-carrito [carrito]="elCarrito"></app-tienda-carrito>
+        </div>
+    </div>
+
+</div>
