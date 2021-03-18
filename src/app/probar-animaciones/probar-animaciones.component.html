@@ -1,0 +1,7 @@
+
+<!--Indicamos la animacion de esta forma : [@nombreanimacion]="condiciones"-->
+<div [@animar]="todoOk ? 'inicio' : 'final'" class="container">
+    <h1>Esto esta dentro de la animacion</h1>
+</div>
+<p class="alert alert-primary">todoOk: {{todoOk}}</p>
+<button class="btn btn-primary" (click)="cambiar()">Cambiar todoOk</button>

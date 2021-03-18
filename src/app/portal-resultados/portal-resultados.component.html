@@ -1,13 +1,23 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-12" *ngFor="let trayecto of servicioReservas.datos.billetes">
+        <div class="form-group">
+            <label for="precio"> Precio Maximo</label>
+            <input type="number" id="precio" class="form-control" [(ngModel)]="precioFiltro">
+        </div>
+    </div>
+    <div class="row">
+        <!-- <div class="col-12" *ngFor="let trayecto of servicioReservas.datos.billetes"> -->
+        <div class="col-12" *ngFor="let trayecto of (servicioReservas.datos.billetes | filtroPrecios:precioFiltro)">
             <div class="card">
                 <div class="card-head">
                     {{trayecto.origen}} -> {{trayecto.destino}}
                 </div>
                 <div class="card-body">
-                    <p>Fecha: {{trayecto.fecha | date:'dd/MM/yyyy'}}</p>
+                    <p>Fecha normal: {{trayecto.fecha | date:'dd/MM/yyyy'}}</p>
+                    <p>Fecha es: {{trayecto.fecha | formatoFecha:'es'}}</p>
+                    <p>Fecha en: {{trayecto.fecha | formatoFecha:'en'}}</p>
+                    <p>Fecha cn: {{trayecto.fecha | formatoFecha:'cn'}}</p>
                     <p>Precio <span class="badge badge-primary">{{trayecto.precio | number:'0.2-2'}} €</span></p>
                 </div>
             </div>

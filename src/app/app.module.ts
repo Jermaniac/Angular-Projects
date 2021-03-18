@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
+
+import { HttpClientModule} from "@angular/common/http"
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +20,14 @@ import { PortalResultadosComponent } from './portal-resultados/portal-resultados
 import { ServicioReservasService } from './servicio-reservas.service';
 import { RouterModule } from '@angular/router';
 import { FormatoFechaPipe } from './formato-fecha.pipe';
+import { FiltroPreciosPipe } from './filtro-precios.pipe';
+import { ProbarAnimacionesComponent } from './probar-animaciones/probar-animaciones.component';
+import { ProbarObservablesService } from './probar-observables.service';
+import { ProbarObservablesComponent } from './probar-observables/probar-observables.component';
+import { GestionClientesService } from './gestion-clientes.service';
+import { GestionClientesComponent } from './gestion-clientes/gestion-clientes.component';
+import { FormularioClientesComponent } from './formulario-clientes/formulario-clientes.component';
+import { ValidarNifDirective } from './validar-nif.directive';
 
 @NgModule({
   declarations: [
@@ -31,27 +42,42 @@ import { FormatoFechaPipe } from './formato-fecha.pipe';
     PortalViajesComponent,
     PortalBuscadorComponent,
     PortalResultadosComponent,
-    FormatoFechaPipe
+    FormatoFechaPipe,
+    FiltroPreciosPipe,
+    ProbarAnimacionesComponent,
+    ProbarObservablesComponent,
+    GestionClientesComponent,
+    FormularioClientesComponent,
+    ValidarNifDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    BrowserAnimationsModule,
+    HttpClientModule
     // AppRoutingModule
   ],
   // Indicamos que artefactos de este modulo pueden emplear los modulos que lo importen
   exports : [
-    FormatoFechaPipe
+    FormatoFechaPipe,
+    FiltroPreciosPipe,
+    ValidarNifDirective
   ],
   providers: [
-    ServicioReservasService
+    ServicioReservasService,
+    ProbarObservablesService,
+    GestionClientesService
   ],
   bootstrap: [
     //AppComponent
     // FichaAlumnoComponent
     //TiendaAppComponent
     //ProbarEnrutadoComponent
-    PortalViajesComponent
+    // PortalViajesComponent
+    // ProbarAnimacionesComponent
+    // ProbarObservablesComponent
+    GestionClientesComponent
   ]
 })
 export class AppModule { }

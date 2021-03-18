@@ -1,0 +1,52 @@
+<div class="container">
+    <!--Creamos variable en el navegador con #-->
+    <form #formulario="ngForm">
+        <div class="form-group">
+            <label for="nif">NIF</label>
+            <!--html5 incorpora validaciones en el propio html: required-->
+            <!--Podemos crear variables en este html y usarlas-->
+
+            <!--Crear directivas propias => por comando consola: ng generate directive ValidarNif-->
+            <!--Una vez creado y personalizado, podemos hacer uso de la directiva, en este caso: nif-->
+            <input nif #campoNif="ngModel" required type="text" class="form-control" name="nif" id="nif" [(ngModel)]="cliente.nif">
+            <div class="alert alert-danger" *ngIf="campoNif.invalid && campoNif.touched">
+                <!--campoNif tiene un atributo errors que podemos usar para la condicional *ngIf-->
+                <div *ngIf="campoNif.errors.required">
+                    Nif obligatorio (required)
+                </div>
+                <div *ngIf="campoNif.errors.nif">
+                    Nif con errores de validacion (directiva nif)
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <!--ngModel tambien esta pendiente de validaciones, tiene unos atributos que ayudan a validar:invalid y touched-->
+            <input #campoNombre="ngModel" required type="text" class="form-control" name="nombre" id="nombre" [(ngModel)]="cliente.nombre">
+            <div class="alert alert-danger" *ngIf="campoNombre.invalid && campoNombre.touched">
+                <div *ngIf="campoNombre.errors.required">
+                    Nombre obligatorio (required)
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="apellidos">Apellidos</label>
+            <!--ngModel tambien esta pendiente de validaciones-->
+            <!-- Con pattern puedo colocar una expresion regular para validar el campo-->
+            <input #campoApellidos="ngModel" required pattern="^[a-zA-Z]{3,20}$" type="text" class="form-control" name="apellidos" id="apellidos" [(ngModel)]="cliente.apellidos">
+            <div class="alert alert-danger" *ngIf="campoApellidos.invalid && campoApellidos.touched">
+                <div *ngIf="campoApellidos.errors.required">
+                    Apellidos obligatorio (required)
+                </div>
+                <div *ngIf="campoApellidos.errors.pattern">
+                    Apellidos incorrectos (pattern)
+                </div>
+            </div>
+        </div>
+        <div>
+            <button (click)="darDeAlta()" class="btn btn-primary">Crear Cliente</button>
+        </div>
+    </form>
+</div>
