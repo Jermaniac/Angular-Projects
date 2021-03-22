@@ -28,6 +28,7 @@ import { GestionClientesService } from './gestion-clientes.service';
 import { GestionClientesComponent } from './gestion-clientes/gestion-clientes.component';
 import { FormularioClientesComponent } from './formulario-clientes/formulario-clientes.component';
 import { ValidarNifDirective } from './validar-nif.directive';
+import { DirectivaAlertDirective } from './directiva-alert.directive';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ValidarNifDirective } from './validar-nif.directive';
     ProbarObservablesComponent,
     GestionClientesComponent,
     FormularioClientesComponent,
-    ValidarNifDirective
+    ValidarNifDirective,
+    DirectivaAlertDirective
   ],
   imports: [
     BrowserModule,
@@ -59,10 +61,12 @@ import { ValidarNifDirective } from './validar-nif.directive';
     // AppRoutingModule
   ],
   // Indicamos que artefactos de este modulo pueden emplear los modulos que lo importen
+  // Aqui suelen ir PIPES y DIRECTIVES
   exports : [
     FormatoFechaPipe,
     FiltroPreciosPipe,
-    ValidarNifDirective
+    ValidarNifDirective,
+    DirectivaAlertDirective
   ],
   providers: [
     ServicioReservasService,

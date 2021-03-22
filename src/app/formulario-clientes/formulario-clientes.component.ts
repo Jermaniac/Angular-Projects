@@ -27,7 +27,17 @@ export class FormularioClientesComponent implements OnInit {
   }
 
   darDeAlta(){
-    this.servicio.darAlta(this.cliente).subscribe();
+    // Siempre suscribirnos para hacer llamadas rest
+    this.servicio.darAlta(this.cliente).subscribe(
+      (respuestaOk) => {
+        console.log("Cliente creado OK ...");
+        console.log(respuestaOk);
+      },
+      (respuestaKo) => {
+        console.log("Cliente no creado");
+        console.log(respuestaKo);
+      }
+    );
   }
 
 }

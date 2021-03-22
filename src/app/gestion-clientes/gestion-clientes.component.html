@@ -7,10 +7,11 @@
     <table class="table table-dark">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Apellidos</th>
-                <th>Provincia</th>
+                <td>ID</td>
+                <td>Nombre</td>
+                <td>Apellidos</td>
+                <td>Provincia</td>
+                <td></td>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +20,9 @@
                 <th>{{cliente.nombre}}</th>
                 <th>{{cliente.apellidos}}</th>
                 <th>{{cliente.provincia}}</th>
+                <th>
+                    <button class="btn btn-primary" (click)="borrarCliente(cliente)">Borrar</button>
+                </th>
             </tr>
         </tbody>
     </table>

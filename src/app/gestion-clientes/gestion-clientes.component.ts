@@ -23,6 +23,21 @@ export class GestionClientesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  borrarCliente(cliente : Cliente){
+    if(confirm("¿Seguro que quieres borrar?")){
+      this.servicioClientes.borrarCliente(cliente).subscribe(
+        (respuestaOk) => {
+          console.log("Cliente borrado OK ...");
+          console.log(respuestaOk);
+        },
+        (respuestaKo) => {
+            console.log("Cliente no borrado KO ...");
+            console.log(respuestaKo);
+        }
+      );
+    }
+  }
+
   cargarClientes () {
     this.servicioClientes.consultarTodosLosClientes().subscribe(
       //Para recibir la respuesta

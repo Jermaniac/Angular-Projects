@@ -32,6 +32,12 @@ export class GestionClientesService {
       this.opciones
     );
   }
+  borrarCliente(cliente : Cliente){
+    // Hay que poner la url junto con el identificador cliente
+    return this.httpCliente.delete(
+      `${this.urlBase}/${cliente.id}`
+    );
+  }
 
   consultarTodosLosClientes () {
     return this.httpCliente.get(

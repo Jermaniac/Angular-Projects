@@ -9,7 +9,8 @@
             <!--Crear directivas propias => por comando consola: ng generate directive ValidarNif-->
             <!--Una vez creado y personalizado, podemos hacer uso de la directiva, en este caso: nif-->
             <input nif #campoNif="ngModel" required type="text" class="form-control" name="nif" id="nif" [(ngModel)]="cliente.nif">
-            <div class="alert alert-danger" *ngIf="campoNif.invalid && campoNif.touched">
+            <!--Esta es otra directiva que hemos usado para implementar la clase alert y para agrandar la fuente cuando se pase el raton: alerta-->
+            <div alerta *ngIf="campoNif.invalid && campoNif.touched">
                 <!--campoNif tiene un atributo errors que podemos usar para la condicional *ngIf-->
                 <div *ngIf="campoNif.errors.required">
                     Nif obligatorio (required)
@@ -24,7 +25,7 @@
             <label for="nombre">Nombre</label>
             <!--ngModel tambien esta pendiente de validaciones, tiene unos atributos que ayudan a validar:invalid y touched-->
             <input #campoNombre="ngModel" required type="text" class="form-control" name="nombre" id="nombre" [(ngModel)]="cliente.nombre">
-            <div class="alert alert-danger" *ngIf="campoNombre.invalid && campoNombre.touched">
+            <div alerta *ngIf="campoNombre.invalid && campoNombre.touched">
                 <div *ngIf="campoNombre.errors.required">
                     Nombre obligatorio (required)
                 </div>
@@ -36,7 +37,7 @@
             <!--ngModel tambien esta pendiente de validaciones-->
             <!-- Con pattern puedo colocar una expresion regular para validar el campo-->
             <input #campoApellidos="ngModel" required pattern="^[a-zA-Z]{3,20}$" type="text" class="form-control" name="apellidos" id="apellidos" [(ngModel)]="cliente.apellidos">
-            <div class="alert alert-danger" *ngIf="campoApellidos.invalid && campoApellidos.touched">
+            <div alerta *ngIf="campoApellidos.invalid && campoApellidos.touched">
                 <div *ngIf="campoApellidos.errors.required">
                     Apellidos obligatorio (required)
                 </div>
